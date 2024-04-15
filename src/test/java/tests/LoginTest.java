@@ -27,7 +27,7 @@ public class LoginTest {
                 .then()
                 .log().status()
                 .log().body()
-                .body(matchesJsonSchemaInClasspath("classwork/schemas/success_lgin_schema.json"))
+                .body(matchesJsonSchemaInClasspath("classwork/schemas/success_login_schema.json"))
                 .statusCode(200)
                 .extract().response();
 
