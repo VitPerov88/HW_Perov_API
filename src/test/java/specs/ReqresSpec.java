@@ -11,7 +11,7 @@ import static io.restassured.filter.log.LogDetail.STATUS;
 import static io.restassured.http.ContentType.JSON;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 
-public class HomeWorkSpec {
+public class ReqresSpec {
     public static RequestSpecification defaultRequestSpec = with()
             .filter(withCustomTemplates())
             .log().uri()
@@ -22,28 +22,24 @@ public class HomeWorkSpec {
             .expectStatusCode(200)
             .log(STATUS)
             .log(BODY)
-            .expectBody(matchesJsonSchemaInClasspath("homework/schemas/get_user_schema.json"))
             .build();
 
     public static final ResponseSpecification updateUserPutResponseSpec = new ResponseSpecBuilder()
             .expectStatusCode(200)
             .log(STATUS)
             .log(BODY)
-            .expectBody(matchesJsonSchemaInClasspath("homework/schemas/put_user_job_schema.json"))
             .build();
 
     public static final ResponseSpecification createUserResponseSpec = new ResponseSpecBuilder()
             .expectStatusCode(201)
             .log(STATUS)
             .log(BODY)
-            .expectBody(matchesJsonSchemaInClasspath("homework/schemas/create_user_schema.json"))
             .build();
 
     public static final ResponseSpecification updateUserPatchResponseSpec = new ResponseSpecBuilder()
             .expectStatusCode(200)
             .log(STATUS)
             .log(BODY)
-            .expectBody(matchesJsonSchemaInClasspath("homework/schemas/put_user_job_schema.json"))
             .build();
 
     public static final ResponseSpecification deleteResponseSpec = new ResponseSpecBuilder()

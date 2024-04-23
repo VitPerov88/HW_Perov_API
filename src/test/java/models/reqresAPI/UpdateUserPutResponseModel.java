@@ -1,4 +1,4 @@
-package models.homework;
+package models.reqresAPI;
 
 import lombok.Data;
 

@@ -7,7 +7,7 @@ import static io.restassured.RestAssured.given;
 import static io.restassured.http.ContentType.JSON;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 
-public class HomeWorkApiTests extends TestBase {
+public class ReqresApiTests extends TestBase {
 
     @Test
     @DisplayName("Check users list")
@@ -15,13 +15,13 @@ public class HomeWorkApiTests extends TestBase {
         given()
                 .log().uri()
                 .log().method()
-                .when()
+        .when()
                 .get("/users?page=2")
-                .then()
+        .then()
                 .log().status()
                 .log().body()
                 .statusCode(200)
-                .body(matchesJsonSchemaInClasspath("homework/schemas/list_users_schema.json"));
+                .body(matchesJsonSchemaInClasspath("reqres/schemas/list_users_schema.json"));
     }
 
     @Test
@@ -33,12 +33,12 @@ public class HomeWorkApiTests extends TestBase {
                 .log().body()
                 .contentType(JSON)
                 .body("{ \"name\": \"morpheus\", \"job\": \"leader\" }")
-                .when()
+        .when()
                 .post("/users")
-                .then()
+        .then()
                 .log().status()
                 .log().body()
-                .body(matchesJsonSchemaInClasspath("homework/schemas/create_user_schema.json"))
+                .body(matchesJsonSchemaInClasspath("reqres/schemas/create_user_schema.json"))
                 .statusCode(201)
                 .extract().response();
     }
@@ -52,12 +52,12 @@ public class HomeWorkApiTests extends TestBase {
                 .log().body()
                 .contentType(JSON)
                 .body("{ \"name\": \"morpheus\", \"job\": \"zion resident\" }")
-                .when()
+        .when()
                 .put("/users/2")
-                .then()
+        .then()
                 .log().status()
                 .log().body()
-                .body(matchesJsonSchemaInClasspath("homework/schemas/put_user_job_schema.json"))
+                .body(matchesJsonSchemaInClasspath("reqres/schemas/put_user_job_schema.json"))
                 .statusCode(200)
                 .extract().response();
     }
@@ -71,12 +71,12 @@ public class HomeWorkApiTests extends TestBase {
                 .log().body()
                 .contentType(JSON)
                 .body("{ \"name\": \"morpheus\", \"job\": \"zion resident\" }")
-                .when()
+        .when()
                 .put("/users/2")
-                .then()
+        .then()
                 .log().status()
                 .log().body()
-                .body(matchesJsonSchemaInClasspath("homework/schemas/patch_user_job_schema.json"))
+                .body(matchesJsonSchemaInClasspath("reqres/schemas/patch_user_job_schema.json"))
                 .statusCode(200)
                 .extract().response();
     }
@@ -86,9 +86,9 @@ public class HomeWorkApiTests extends TestBase {
         given()
                 .log().uri()
                 .log().method()
-                .when()
+        .when()
                 .delete("/users/2")
-                .then()
+        .then()
                 .log().status()
                 .log().body()
                 .statusCode(204)
