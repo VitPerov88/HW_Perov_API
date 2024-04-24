@@ -18,13 +18,7 @@ public class ReqresSpec {
             .log().body()
             .log().headers()
             .contentType(JSON);
-    public static final ResponseSpecification getUserResponseSpec = new ResponseSpecBuilder()
-            .expectStatusCode(200)
-            .log(STATUS)
-            .log(BODY)
-            .build();
-
-    public static final ResponseSpecification updateUserPutResponseSpec = new ResponseSpecBuilder()
+    public static final ResponseSpecification successResponseSpec = new ResponseSpecBuilder()
             .expectStatusCode(200)
             .log(STATUS)
             .log(BODY)
@@ -32,12 +26,6 @@ public class ReqresSpec {
 
     public static final ResponseSpecification createUserResponseSpec = new ResponseSpecBuilder()
             .expectStatusCode(201)
-            .log(STATUS)
-            .log(BODY)
-            .build();
-
-    public static final ResponseSpecification updateUserPatchResponseSpec = new ResponseSpecBuilder()
-            .expectStatusCode(200)
             .log(STATUS)
             .log(BODY)
             .build();

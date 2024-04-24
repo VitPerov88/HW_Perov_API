@@ -32,7 +32,7 @@ public class ReqresApiExtendedTests extends TestBase {
 
                         .then()
                         .body(matchesJsonSchemaInClasspath("reqres/schemas/get_user_schema.json"))
-                        .spec(getUserResponseSpec)
+                        .spec(successResponseSpec)
                         .extract().as(GetUserResponseModel.class));
         step("Check result", () -> {
             assertThat(getUserResponseModel.getData().getId()).isEqualTo("2");
@@ -79,7 +79,7 @@ public class ReqresApiExtendedTests extends TestBase {
                         .put("/users/2")
                         .then()
                         .body(matchesJsonSchemaInClasspath("reqres/schemas/put_user_job_schema.json"))
-                        .spec(updateUserPutResponseSpec)
+                        .spec(successResponseSpec)
                         .extract().as(UpdateUserPutResponseModel.class));
         step("Check result", () -> {
             assertThat(updateUserPutResponseModel.getName()).isEqualTo(userName);
@@ -101,7 +101,7 @@ public class ReqresApiExtendedTests extends TestBase {
                         .patch("/users/2")
                         .then()
                         .body(matchesJsonSchemaInClasspath("reqres/schemas/patch_user_job_schema.json"))
-                        .spec(updateUserPatchResponseSpec)
+                        .spec(successResponseSpec)
                         .extract().as(UpdateUserPatchResponseModel.class));
         step("Check result", () -> {
             assertThat(updateUserPatchResponseModel.getName()).isEqualTo(userName);
